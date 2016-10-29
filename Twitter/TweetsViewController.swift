@@ -16,21 +16,12 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
-        // Do any additional setup after loading the view.
-        getTweets(refreshControl: nil)
-//        TwitterClient.sharedInstance?.homeTimeline(success: { (tweets: [Tweet]) in
-////            for tweet in tweets {
-////                print(tweet.text)
-////            }
-//                self.tweets = tweets
-//            self.tableView.reloadData()
-//            }, failure: { (error: Error) in
-//                print("error: \(error.localizedDescription)")
-//        })
         
+        getTweets(refreshControl: nil)
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(getTweets(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)

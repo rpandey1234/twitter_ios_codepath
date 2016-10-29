@@ -39,7 +39,10 @@ class TweetTableViewCell: UITableViewCell {
             setTintedImage(imageView: replyImageView, filename: "reply", color: UIColor.lightGray)
             setTintedImage(imageView: retweetImageView, filename: "retweet", color: UIColor.lightGray)
             setTintedImage(imageView: favoriteImageView, filename: "star", color: UIColor.lightGray)
-//            timestampLabel.text = tweet.timestamp
+            if let timestamp = tweet.timestamp {
+                timestampLabel.text = timestamp.timeAgoSimple
+            }
+            
         }
     }
 

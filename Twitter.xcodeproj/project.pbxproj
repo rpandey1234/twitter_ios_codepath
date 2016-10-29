@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B72209451DC50657000B446C /* NSDate+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72209441DC50657000B446C /* NSDate+Relative.swift */; };
+		B72209471DC515D1000B446C /* SingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72209461DC515D1000B446C /* SingleViewController.swift */; };
+		B72209491DC5162E000B446C /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72209481DC5162E000B446C /* ComposeViewController.swift */; };
 		B79456A51DC1CCA0002DCC76 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79456A41DC1CC9F002DCC76 /* User.swift */; };
 		B79456A71DC1CDAE002DCC76 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79456A61DC1CDAE002DCC76 /* Tweet.swift */; };
 		B79456AB1DC25158002DCC76 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79456AA1DC25158002DCC76 /* TwitterClient.swift */; };
@@ -21,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B72209441DC50657000B446C /* NSDate+Relative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Relative.swift"; path = "../NSDate+Relative.swift"; sourceTree = "<group>"; };
+		B72209461DC515D1000B446C /* SingleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleViewController.swift; sourceTree = "<group>"; };
+		B72209481DC5162E000B446C /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		B79456A41DC1CC9F002DCC76 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B79456A61DC1CDAE002DCC76 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		B79456AA1DC25158002DCC76 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
@@ -82,6 +88,8 @@
 			children = (
 				B7F5AF181DC082A9001FDBD2 /* LoginViewController.swift */,
 				B79456AC1DC25C16002DCC76 /* TweetsViewController.swift */,
+				B72209461DC515D1000B446C /* SingleViewController.swift */,
+				B72209481DC5162E000B446C /* ComposeViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -133,6 +141,7 @@
 				B7F5AF0D1DC080B0001FDBD2 /* Assets.xcassets */,
 				B7F5AF0F1DC080B0001FDBD2 /* LaunchScreen.storyboard */,
 				B7F5AF121DC080B0001FDBD2 /* Info.plist */,
+				B72209441DC50657000B446C /* NSDate+Relative.swift */,
 			);
 			path = Twitter;
 			sourceTree = "<group>";
@@ -269,7 +278,10 @@
 				B79456A51DC1CCA0002DCC76 /* User.swift in Sources */,
 				B79456A71DC1CDAE002DCC76 /* Tweet.swift in Sources */,
 				B7F5AF191DC082A9001FDBD2 /* LoginViewController.swift in Sources */,
+				B72209471DC515D1000B446C /* SingleViewController.swift in Sources */,
 				B79456AD1DC25C16002DCC76 /* TweetsViewController.swift in Sources */,
+				B72209491DC5162E000B446C /* ComposeViewController.swift in Sources */,
+				B72209451DC50657000B446C /* NSDate+Relative.swift in Sources */,
 				B79456AB1DC25158002DCC76 /* TwitterClient.swift in Sources */,
 				B7F5AF071DC080B0001FDBD2 /* AppDelegate.swift in Sources */,
 				B79456D81DC33E0A002DCC76 /* TweetTableViewCell.swift in Sources */,

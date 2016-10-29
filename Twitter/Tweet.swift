@@ -22,10 +22,9 @@ class Tweet: NSObject {
         let timestampString = dictionary["created_at"] as? String
         if let timestampString = timestampString {
             let formatter = DateFormatter()
-            formatter.dateFormat = "EEE MM d HH:mm:ss Z y"
+            formatter.dateFormat = "EEE MMM d HH:mm:ss Z y"
             timestamp = formatter.date(from: timestampString) as NSDate?
         }
-        timestamp = dictionary[""] as? NSDate
         retweetCount = (dictionary["retweet_count"] as? Int) ?? 0
         hasRetweeted = (dictionary["retweeted"] as? Bool) ?? false
         favoriteCount = (dictionary["favorite_count"] as? Int) ?? 0
