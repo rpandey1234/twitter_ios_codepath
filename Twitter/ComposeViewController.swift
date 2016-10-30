@@ -13,6 +13,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()

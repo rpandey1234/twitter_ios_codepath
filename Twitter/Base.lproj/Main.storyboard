@@ -169,7 +169,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="f8Z-4i-4tG">
                             <connections>
-                                <segue destination="FfE-Vc-oVi" kind="presentation" id="10m-0A-8o6"/>
+                                <segue destination="FfE-Vc-oVi" kind="presentation" identifier="composeSegue" id="10m-0A-8o6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -209,10 +209,10 @@
                                 <color key="textColor" red="0.43529411759999997" green="0.43529411759999997" blue="0.43529411759999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wyc-W8-7c3">
-                                <frame key="frameInset" minX="8" minY="120" width="325" height="193"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Wyc-W8-7c3">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="5O9-7D-Oeb"/>
                                     <constraint firstAttribute="width" constant="325" id="zU3-rH-Tx0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -223,12 +223,11 @@
                         <constraints>
                             <constraint firstItem="TLY-OF-IEI" firstAttribute="leading" secondItem="iZq-kk-ZnL" secondAttribute="leading" id="2oE-y9-OMF"/>
                             <constraint firstItem="TLY-OF-IEI" firstAttribute="top" secondItem="iZq-kk-ZnL" secondAttribute="bottom" constant="4" id="8Io-gl-xQG"/>
-                            <constraint firstItem="Wyc-W8-7c3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lqU-QA-Uqv" secondAttribute="bottom" constant="8" id="8Jh-hJ-uPP"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="iZq-kk-ZnL" secondAttribute="trailing" constant="20" id="Re0-gH-Gko"/>
                             <constraint firstItem="Wyc-W8-7c3" firstAttribute="leading" secondItem="lqU-QA-Uqv" secondAttribute="leading" id="TZE-Vp-Mjs"/>
                             <constraint firstItem="iZq-kk-ZnL" firstAttribute="leading" secondItem="lqU-QA-Uqv" secondAttribute="trailing" constant="6" id="Zta-nt-Sr8"/>
+                            <constraint firstItem="Wyc-W8-7c3" firstAttribute="top" secondItem="lqU-QA-Uqv" secondAttribute="bottom" constant="8" id="aQG-uf-faN"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wyc-W8-7c3" secondAttribute="trailing" constant="40" id="cHH-Jd-bFU"/>
-                            <constraint firstItem="kOJ-tK-Ufu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Wyc-W8-7c3" secondAttribute="bottom" constant="10" id="eb4-en-MNt"/>
                             <constraint firstItem="lqU-QA-Uqv" firstAttribute="top" secondItem="ZMT-T9-MPG" secondAttribute="bottom" constant="8" id="leE-Cl-uAm"/>
                             <constraint firstItem="lqU-QA-Uqv" firstAttribute="leading" secondItem="02j-jA-o21" secondAttribute="leading" constant="8" id="mwL-sE-Wu7"/>
                             <constraint firstItem="iZq-kk-ZnL" firstAttribute="top" secondItem="ZMT-T9-MPG" secondAttribute="bottom" constant="8" id="pTI-aC-9St"/>

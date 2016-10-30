@@ -44,6 +44,17 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("segue id: \(segue.identifier)")
+        if let identifier = segue.identifier {
+            if (identifier == "composeSegue") {
+                let navController = segue.destination as! UINavigationController
+                let composeVc = navController.topViewController as! ComposeViewController
+                composeVc.user = User.currentUser
+            }
+        }
+    }
+    
     @IBAction func onLogoutButton(_ sender: AnyObject) {
         TwitterClient.sharedInstance?.logout()
     }
