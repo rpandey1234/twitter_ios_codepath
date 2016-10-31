@@ -19,7 +19,14 @@ class ComposeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("did load compose view controller")
+        if let user = User.currentUser {
+            nameLabel.text = user.name
+            handleLabel.text = user.screenName
+            if let imageUrl = user.profileUrl {
+                pictureImageView.setImageWith(imageUrl)
+            }
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +36,9 @@ class ComposeViewController: UIViewController {
     
     @IBAction func onCancelTap(_ sender: AnyObject) {
         dismiss(animated: true) {}
+    }
+    @IBAction func onTweetTap(_ sender: AnyObject) {
+        print("tweeting")
     }
 
     /*

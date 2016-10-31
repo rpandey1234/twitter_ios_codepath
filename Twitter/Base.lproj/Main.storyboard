@@ -239,7 +239,11 @@
                                 <action selector="onCancelTap:" destination="1es-gd-CgW" id="FlE-wr-anE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="h4i-BP-YAQ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="h4i-BP-YAQ">
+                            <connections>
+                                <action selector="onTweetTap:" destination="1es-gd-CgW" id="3Gv-c5-Lov"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="handleLabel" destination="TLY-OF-IEI" id="heK-a8-CGe"/>
