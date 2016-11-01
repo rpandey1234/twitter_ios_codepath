@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B700A4DF1DC8700F00DF6F95 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B700A4DE1DC8700F00DF6F95 /* InfiniteScrollActivityView.swift */; };
 		B72209451DC50657000B446C /* NSDate+Relative.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72209441DC50657000B446C /* NSDate+Relative.swift */; };
 		B72209471DC515D1000B446C /* SingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72209461DC515D1000B446C /* SingleViewController.swift */; };
 		B72209491DC5162E000B446C /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72209481DC5162E000B446C /* ComposeViewController.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B700A4DE1DC8700F00DF6F95 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		B72209441DC50657000B446C /* NSDate+Relative.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Relative.swift"; path = "../NSDate+Relative.swift"; sourceTree = "<group>"; };
 		B72209461DC515D1000B446C /* SingleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleViewController.swift; sourceTree = "<group>"; };
 		B72209481DC5162E000B446C /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				B79456D71DC33E0A002DCC76 /* TweetTableViewCell.swift */,
+				B700A4DE1DC8700F00DF6F95 /* InfiniteScrollActivityView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				B7F5AF191DC082A9001FDBD2 /* LoginViewController.swift in Sources */,
 				B72209471DC515D1000B446C /* SingleViewController.swift in Sources */,
 				B79456AD1DC25C16002DCC76 /* TweetsViewController.swift in Sources */,
+				B700A4DF1DC8700F00DF6F95 /* InfiniteScrollActivityView.swift in Sources */,
 				B72209491DC5162E000B446C /* ComposeViewController.swift in Sources */,
 				B72209451DC50657000B446C /* NSDate+Relative.swift in Sources */,
 				B79456AB1DC25158002DCC76 /* TwitterClient.swift in Sources */,
