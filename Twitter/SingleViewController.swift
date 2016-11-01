@@ -43,8 +43,12 @@ class SingleViewController: UIViewController {
                 avatarImageView.setImageWith(imageUrl)
             }
             setTintedImage(imageView: replyImageView, filename: "reply", color: UIColor.lightGray)
-            setTintedImage(imageView: retweetImageView, filename: "retweet", color: UIColor.lightGray)
-            setTintedImage(imageView: favoriteImageView, filename: "star", color: UIColor.lightGray)
+            let colorRetweet = tweet.hasRetweeted ? UIColor.green : UIColor.lightGray
+            setTintedImage(imageView: retweetImageView, filename: "retweet", color: colorRetweet)
+            let colorFav = tweet.hasFavorited ? UIColor.yellow : UIColor.lightGray
+            setTintedImage(imageView: favoriteImageView, filename: "star", color: colorFav)
+            
+            // todo: format these as human readable
             favoriteCountLabel.text = String(tweet.favoriteCount)
             retweetCountLabel.text = String(tweet.retweetCount)
             if let timestamp = tweet.timestamp {
@@ -55,7 +59,40 @@ class SingleViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if (identifier == "composeSegue") {
+                let navController = segue.destination as! UINavigationController
+                let composeVc = navController.topViewController as! ComposeViewController
+                composeVc.user = User.currentUser
+            }
+        }
+    }
 
+    @IBAction func onReplyTap(_ sender: AnyObject) {
+        performSegue(withIdentifier: "composeSegue", sender: tweet)
+    }
+    
+    @IBAction func onRetweet(_ sender: AnyObject) {
+        if let tweet = tweet {
+            tweet.hasRetweeted = !tweet.hasRetweeted
+            let colorRetweet = tweet.hasRetweeted ? UIColor.green : UIColor.lightGray
+            setTintedImage(imageView: retweetImageView, filename: "retweet", color: colorRetweet)
+            TwitterClient.sharedInstance?.retweet(tweet: tweet, retweet: tweet.hasRetweeted)
+        }
+    }
+    
+    @IBAction func onFavorite(_ sender: AnyObject) {
+        if let tweet = tweet {
+            tweet.hasFavorited = !tweet.hasFavorited
+            let colorFav = tweet.hasFavorited ? UIColor.yellow : UIColor.lightGray
+            setTintedImage(imageView: favoriteImageView, filename: "star", color: colorFav)
+            TwitterClient.sharedInstance?.favorite(tweet: tweet, favorite: tweet.hasFavorited)
+            
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

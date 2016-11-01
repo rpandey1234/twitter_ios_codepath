@@ -10,6 +10,7 @@ import UIKit
 
 class ComposeViewController: UIViewController {
 
+    @IBOutlet weak var replyTextView: UITextView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
@@ -17,7 +18,6 @@ class ComposeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         if let user = User.currentUser {
             nameLabel.text = user.name
@@ -28,7 +28,10 @@ class ComposeViewController: UIViewController {
                 pictureImageView.setImageWith(imageUrl)
             }
         }
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        replyTextView.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,10 +40,17 @@ class ComposeViewController: UIViewController {
     }
     
     @IBAction func onCancelTap(_ sender: AnyObject) {
-        dismiss(animated: true) {}
+        dismiss(animated: true)
     }
+    
     @IBAction func onTweetTap(_ sender: AnyObject) {
-        print("tweeting")
+        if replyTextView.text.characters.count == 0 {
+            print("cannot publish empty tweet")
+            return
+        }
+        TwitterClient.sharedInstance?.tweet(status: replyTextView.text, success: { (task: URLSessionDataTask, response: Any?) in
+            self.dismiss(animated: true)
+        })
     }
 
     /*

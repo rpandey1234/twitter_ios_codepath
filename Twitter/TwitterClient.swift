@@ -73,4 +73,30 @@ class TwitterClient: BDBOAuth1SessionManager {
                 self.loginFailure?(error!)
         })
     }
+    
+    func favorite(tweet: Tweet, favorite: Bool) {
+        let endpoint = "1.1/favorites/\(favorite ? "create.json" : "destroy.json")?id=\(String(tweet.id))"
+        post(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+                // do nothing
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print("error: \(error.localizedDescription)")
+        })
+    }
+    
+    func retweet(tweet: Tweet, retweet: Bool) {
+        let endpoint = "1.1/statuses/\(retweet ? "retweet" : "unretweet")/\(String(tweet.id)).json"
+        post(endpoint, parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
+            // do nothing
+            }, failure: { (task: URLSessionDataTask?, error: Error) in
+                print("error: \(error.localizedDescription)")
+        })
+    }
+    
+    func tweet(status: String, success: @escaping (URLSessionDataTask, Any?) -> Void) {
+        let endpoint = "https://api.twitter.com/1.1/statuses/update.json"
+        let parameters: [String:String] = ["status": status]
+        post(endpoint, parameters: parameters, progress: nil, success: success) { (task: URLSessionDataTask?, error: Error) in
+            print("error: \(error.localizedDescription)")
+        }
+    }
 }
