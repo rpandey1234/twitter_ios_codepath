@@ -21,7 +21,9 @@ class ComposeViewController: UIViewController {
         // Do any additional setup after loading the view.
         if let user = User.currentUser {
             nameLabel.text = user.name
-            handleLabel.text = user.screenName
+            if let handle = user.screenName {
+                handleLabel.text = "@" + handle
+            }
             if let imageUrl = user.profileUrl {
                 pictureImageView.setImageWith(imageUrl)
             }

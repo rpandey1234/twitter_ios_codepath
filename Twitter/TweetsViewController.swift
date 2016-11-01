@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var tweets: [Tweet]!
     @IBOutlet weak var tableView: UITableView!
@@ -17,6 +17,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
@@ -45,13 +46,25 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("segue id: \(segue.identifier)")
         if let identifier = segue.identifier {
             if (identifier == "composeSegue") {
                 let navController = segue.destination as! UINavigationController
                 let composeVc = navController.topViewController as! ComposeViewController
                 composeVc.user = User.currentUser
+            } else if (identifier == "detailTweet") {
+                let navController = segue.destination as! UINavigationController
+                let detailVc = navController.topViewController as! SingleViewController
+                detailVc.tweet = sender as? Tweet
             }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let row = tableView.indexPathForSelectedRow?.row {
+            let detailTweet = tweets[row]
+            tableView.deselectRow(at: indexPath, animated: true)
+            performSegue(withIdentifier: "detailTweet", sender: detailTweet)
+            
         }
     }
     
@@ -68,7 +81,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets?.count ?? 0
     }
-
+    
     /*
     // MARK: - Navigation
 
