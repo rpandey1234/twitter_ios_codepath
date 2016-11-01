@@ -14,6 +14,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
+    var prefillText: String?
     var user: User?
     
     override func viewDidLoad() {
@@ -26,6 +27,9 @@ class ComposeViewController: UIViewController {
             }
             if let imageUrl = user.profileUrl {
                 pictureImageView.setImageWith(imageUrl)
+            }
+            if let prefillText = prefillText {
+                replyTextView.text = prefillText
             }
         }
     }

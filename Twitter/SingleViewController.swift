@@ -65,6 +65,9 @@ class SingleViewController: UIViewController {
             if (identifier == "composeSegue") {
                 let navController = segue.destination as! UINavigationController
                 let composeVc = navController.topViewController as! ComposeViewController
+                if let replyHandle = tweet?.user?.screenName {
+                    composeVc.prefillText = "@" + replyHandle + " "
+                }
                 composeVc.user = User.currentUser
             }
         }
@@ -77,6 +80,8 @@ class SingleViewController: UIViewController {
     @IBAction func onRetweet(_ sender: AnyObject) {
         if let tweet = tweet {
             tweet.hasRetweeted = !tweet.hasRetweeted
+            tweet.retweetCount += tweet.hasRetweeted ? 1 : -1
+            retweetCountLabel.text = String(tweet.retweetCount)
             let colorRetweet = tweet.hasRetweeted ? UIColor.green : UIColor.lightGray
             setTintedImage(imageView: retweetImageView, filename: "retweet", color: colorRetweet)
             TwitterClient.sharedInstance?.retweet(tweet: tweet, retweet: tweet.hasRetweeted)
@@ -86,10 +91,11 @@ class SingleViewController: UIViewController {
     @IBAction func onFavorite(_ sender: AnyObject) {
         if let tweet = tweet {
             tweet.hasFavorited = !tweet.hasFavorited
+            tweet.favoriteCount += tweet.hasFavorited ? 1 : -1
+            favoriteCountLabel.text = String(tweet.favoriteCount)
             let colorFav = tweet.hasFavorited ? UIColor.yellow : UIColor.lightGray
             setTintedImage(imageView: favoriteImageView, filename: "star", color: colorFav)
             TwitterClient.sharedInstance?.favorite(tweet: tweet, favorite: tweet.hasFavorited)
-            
         }
     }
     
