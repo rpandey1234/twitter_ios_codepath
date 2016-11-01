@@ -77,6 +77,17 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
             })
             return
         }
+        if CharLimit - replyTextView.text.characters.count < 0 {
+            let alertController = UIAlertController(title: "Too long", message: "Sorry, this tweet is too long", preferredStyle: UIAlertControllerStyle.alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                // dismiss by default
+            }
+            alertController.addAction(OKAction)
+            present(alertController, animated: true, completion: {
+                // empty
+            })
+            return
+        }
         TwitterClient.sharedInstance?.tweet(status: replyTextView.text, success: { (task: URLSessionDataTask, response: Any?) in
             self.dismiss(animated: true)
         })
