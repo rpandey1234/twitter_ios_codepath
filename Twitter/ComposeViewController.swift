@@ -8,14 +8,17 @@
 
 import UIKit
 
-class ComposeViewController: UIViewController {
+class ComposeViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet weak var charsLeftLabel: UIBarButtonItem!
     @IBOutlet weak var replyTextView: UITextView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var handleLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
     var prefillText: String?
     var user: User?
+    var charLeft: Int = 140
+    let CharLimit: Int = 140
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +33,22 @@ class ComposeViewController: UIViewController {
             }
             if let prefillText = prefillText {
                 replyTextView.text = prefillText
+                charLeft = CharLimit - prefillText.characters.count
             }
+            charsLeftLabel.title = String(charLeft)
+            replyTextView.delegate = self
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        charLeft = CharLimit - textView.text.characters.count
+        charsLeftLabel.title = String(charLeft)
+        if (charLeft <= 100) {
+            charsLeftLabel.tintColor = UIColor.orange
+        } else if (charLeft <= 40) {
+            charsLeftLabel.tintColor = UIColor.red
+        } else {
+            charsLeftLabel.tintColor = UIColor.darkGray
         }
     }
     
@@ -49,7 +67,14 @@ class ComposeViewController: UIViewController {
     
     @IBAction func onTweetTap(_ sender: AnyObject) {
         if replyTextView.text.characters.count == 0 {
-            print("cannot publish empty tweet")
+            let alertController = UIAlertController(title: "Empty Tweet", message: "You cannot publish an empty tweet", preferredStyle: UIAlertControllerStyle.alert)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                // dismiss by default
+            }
+            alertController.addAction(OKAction)
+            present(alertController, animated: true, completion: {
+                // empty
+            })
             return
         }
         TwitterClient.sharedInstance?.tweet(status: replyTextView.text, success: { (task: URLSessionDataTask, response: Any?) in

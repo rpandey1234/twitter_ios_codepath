@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -240,13 +241,19 @@
                                 <action selector="onCancelTap:" destination="1es-gd-CgW" id="FlE-wr-anE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Tweet" id="h4i-BP-YAQ">
-                            <connections>
-                                <action selector="onTweetTap:" destination="1es-gd-CgW" id="3Gv-c5-Lov"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Tweet" id="h4i-BP-YAQ">
+                                <connections>
+                                    <action selector="onTweetTap:" destination="1es-gd-CgW" id="3Gv-c5-Lov"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="140" style="plain" id="zYD-bq-asr">
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="charsLeftLabel" destination="zYD-bq-asr" id="IJl-TC-U49"/>
                         <outlet property="handleLabel" destination="TLY-OF-IEI" id="heK-a8-CGe"/>
                         <outlet property="nameLabel" destination="iZq-kk-ZnL" id="xeA-IK-kgB"/>
                         <outlet property="pictureImageView" destination="lqU-QA-Uqv" id="YT9-32-dXc"/>
