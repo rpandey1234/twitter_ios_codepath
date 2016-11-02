@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j6R-jH-cUx">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -49,6 +49,58 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
+        <!--Hamburger View Controller-->
+        <scene sceneID="ogj-7E-3ij">
+            <objects>
+                <viewController storyboardIdentifier="HamburgerViewController" title="Hamburger View Controller" id="j6R-jH-cUx" customClass="HamburgerViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8kT-2y-Q0U"/>
+                        <viewControllerLayoutGuide type="bottom" id="B5m-cv-AoA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xSP-ST-RVY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o0S-um-mpE" userLabel="Menu View">
+                                <frame key="frameInset" width="359" height="659"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSz-nt-hab" userLabel="Content View">
+                                <frame key="frameInset" width="375" height="659"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4RD-po-OBF" appends="YES" id="m6T-jJ-ldX"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="o0S-um-mpE" secondAttribute="trailing" id="2eP-Sj-0rZ"/>
+                            <constraint firstItem="o0S-um-mpE" firstAttribute="leading" secondItem="xSP-ST-RVY" secondAttribute="leading" id="A4M-ba-Z09"/>
+                            <constraint firstItem="B5m-cv-AoA" firstAttribute="top" secondItem="o0S-um-mpE" secondAttribute="bottom" id="LjK-RY-7Ti"/>
+                            <constraint firstItem="B5m-cv-AoA" firstAttribute="top" secondItem="LSz-nt-hab" secondAttribute="bottom" id="QHs-aK-00N"/>
+                            <constraint firstItem="LSz-nt-hab" firstAttribute="leading" secondItem="xSP-ST-RVY" secondAttribute="leading" id="VVp-3F-obC"/>
+                            <constraint firstItem="LSz-nt-hab" firstAttribute="top" secondItem="xSP-ST-RVY" secondAttribute="top" id="gin-Q1-2qh"/>
+                            <constraint firstItem="o0S-um-mpE" firstAttribute="top" secondItem="xSP-ST-RVY" secondAttribute="top" id="puh-sT-xsR"/>
+                            <constraint firstItem="LSz-nt-hab" firstAttribute="width" secondItem="xSP-ST-RVY" secondAttribute="width" id="yxl-kL-YTs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="LSz-nt-hab" id="CD3-ek-3kr"/>
+                        <outlet property="leftMarginConstraint" destination="VVp-3F-obC" id="16t-t1-hVJ"/>
+                        <outlet property="menuView" destination="o0S-um-mpE" id="xbp-E0-g2v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XP1-MW-71h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="4RD-po-OBF">
+                    <connections>
+                        <action selector="onPanGesture:" destination="j6R-jH-cUx" id="fpz-3D-jFm"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="397.60000000000002" y="920.68965517241384"/>
+        </scene>
         <!--Twitter-->
         <scene sceneID="6go-nr-lfL">
             <objects>
@@ -68,7 +120,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="247"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tem-KO-C9F" id="Xz5-Py-0gF">
-                                            <frame key="frameInset" width="375" height="247"/>
+                                            <frame key="frameInset" width="375" height="246"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet content goes here. The content could be quite large in which case we should wrap the content." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCk-bl-ntg">
@@ -511,6 +563,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="B0Z-5Y-jPU"/>
+        <segue reference="10m-0A-8o6"/>
     </inferredMetricsTieBreakers>
 </document>
