@@ -42,7 +42,6 @@ class HamburgerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -57,7 +56,9 @@ class HamburgerViewController: UIViewController {
         if sender.state == UIGestureRecognizerState.began {
             
         } else if sender.state == UIGestureRecognizerState.changed {
-            leftMarginConstraint.constant = originalLeftMargin + translation.x
+            if velocity.x > 0 {
+                leftMarginConstraint.constant = originalLeftMargin + translation.x
+            }
         } else if sender.state == UIGestureRecognizerState.ended {
             UIView.animate(withDuration: 0.3, animations: { 
                 if velocity.x > 0 {
