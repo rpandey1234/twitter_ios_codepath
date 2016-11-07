@@ -13,6 +13,11 @@ class User: NSObject {
     var screenName: String?
     var tagline: String?
     var profileUrl: URL?
+    var profileBackgroundUrl: URL?
+    var followerCount: Int?
+    var followingCount: Int?
+    var tweetCount: Int?
+    
     var dictionary: NSDictionary?
     
     init(dictionary: NSDictionary) {
@@ -22,8 +27,16 @@ class User: NSObject {
         if let profileImageString = profileImageString {
             profileUrl = URL(string: profileImageString)
         }
+        let profileBackgroundString = dictionary["profile_background_image_url_https"] as? String
+        if let profileBackgroundString = profileBackgroundString {
+            profileBackgroundUrl = URL(string: profileBackgroundString)
+        }
         screenName = dictionary["screen_name"] as? String
         tagline = dictionary["description"] as? String
+        followerCount = dictionary["followers_count"] as? Int
+        followingCount = dictionary["friends_count"] as? Int
+        tweetCount = dictionary["statuses_count"] as? Int
+        
     }
     
     static let userDidLogoutNotification: String = "UserDidLogout"
