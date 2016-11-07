@@ -36,6 +36,28 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    func profileStatuses(maxId: String?, screenName: String?, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        var parameters: [String:String] = [:]
+        if let maxId = maxId {
+            parameters = ["max_id": maxId]
+        }
+        if let screenName = screenName {
+            parameters["screen_name"] = screenName
+        }
+        get("1.1/statuses/user_timeline.json", parameters: parameters, progress: nil,
+            
+            success: { (task: URLSessionDataTask, response: Any?) in
+                let dictionaries = response as! [NSDictionary]
+                let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+                success(tweets)
+        },
+            
+            failure: { (task: URLSessionDataTask?, error: Error) in
+                failure(error)
+        }
+        )
+    }
+    
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
                 let userDictionary = response as! NSDictionary

@@ -28,6 +28,7 @@ class TweetTableViewCell: UITableViewCell {
     
     var tweet: Tweet! {
         didSet {
+//            contentLabel.text = "hello"
             contentLabel.text = tweet.text
             authorLabel.text = tweet.user?.name
             if let handle = tweet.user?.screenName {

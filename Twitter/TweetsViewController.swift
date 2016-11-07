@@ -19,6 +19,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let nibName = UINib(nibName: "TweetTableViewCell", bundle:nil)
+        tableView.register(nibName, forCellReuseIdentifier: "TweetTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableViewAutomaticDimension
