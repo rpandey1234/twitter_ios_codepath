@@ -14,10 +14,10 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var leftMarginConstraint: NSLayoutConstraint!
     var originalLeftMargin: CGFloat! = 0
-    var menuViewController: UIViewController! {
+    var menuNavigationController: UINavigationController! {
         didSet {
             view.layoutIfNeeded()
-            menuView.addSubview(menuViewController.view)
+            menuView.addSubview(menuNavigationController.view)
         }
     }
     var contentViewController: UIViewController! {

@@ -20,9 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if User.currentUser != nil {
             let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
-            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            let menuNavigationController = storyboard.instantiateViewController(withIdentifier: "MenuNavigationController") as! UINavigationController
+            let menuViewController = menuNavigationController.topViewController as! MenuViewController
             menuViewController.hamburgerViewController = hamburgerViewController
-            hamburgerViewController.menuViewController = menuViewController
+            hamburgerViewController.menuNavigationController = menuNavigationController
             self.window?.rootViewController = hamburgerViewController
         } else {
             let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
