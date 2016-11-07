@@ -1,14 +1,15 @@
 //
-//  ProfileViewController.swift
+//  MentionsViewController.swift
 //  Twitter
 //
-//  Created by Rahul Pandey on 11/2/16.
+//  Created by Rahul Pandey on 11/7/16.
 //  Copyright © 2016 Rahul Pandey. All rights reserved.
 //
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class MentionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+
 
     var isMoreDataLoading = false
     var tweets: [Tweet]!
@@ -40,7 +41,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         refreshControl.addTarget(self, action: #selector(getTweets(refreshControl:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
     }
-    
     func getTweets(refreshControl: UIRefreshControl?) {
         var maxId: String? = nil
         if let tweets = tweets {
@@ -51,7 +51,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         if refreshControl != nil {
             maxId = nil
         }
-        TwitterClient.sharedInstance?.profileStatuses(maxId: maxId, screenName: User.currentUser?.screenName!, success: { (tweets: [Tweet]) in
+        TwitterClient.sharedInstance?.mentionsTimeline(maxId: maxId, success: { (tweets: [Tweet]) in
             if (maxId != nil) {
                 for (index, tweet) in tweets.enumerated() {
                     if index != 0 {
@@ -111,17 +111,6 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweets?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHeaderView") as! ProfileHeaderView
-        cell.backgroundColor = UIColor.white
-        cell.user = User.currentUser
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -13,6 +13,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     private var homeNavigationController: UIViewController!
     private var profileNavigationController: UIViewController!
+    private var mentionsNavigationController: UIViewController!
     var viewControllers: [UIViewController] = []
     var hamburgerViewController: HamburgerViewController!
 
@@ -25,8 +26,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         homeNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
         profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
+        mentionsNavigationController = storyboard.instantiateViewController(withIdentifier: "MentionsNavigationController")
         viewControllers.append(homeNavigationController)
         viewControllers.append(profileNavigationController)
+        viewControllers.append(mentionsNavigationController)
         
         hamburgerViewController.contentViewController = homeNavigationController
     }
@@ -42,7 +45,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-        let titles = ["Home", "Profile"]
+        let titles = ["Home", "Profile", "Mentions"]
         cell.menuTitleLabel.text = titles[indexPath.row]
         return cell
     }

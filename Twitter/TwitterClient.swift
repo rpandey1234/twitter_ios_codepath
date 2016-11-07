@@ -58,6 +58,26 @@ class TwitterClient: BDBOAuth1SessionManager {
         )
     }
     
+    func mentionsTimeline(maxId: String?, success: @escaping ([Tweet]) -> (), failure: @escaping (Error) -> ()) {
+        var parameters: [String:String] = [:]
+        if let maxId = maxId {
+            parameters = ["max_id": maxId]
+        }
+        get("1.1/statuses/mentions_timeline.json", parameters: parameters, progress: nil,
+        
+        success: { (task: URLSessionDataTask, response: Any?) in
+        let dictionaries = response as! [NSDictionary]
+        let tweets = Tweet.tweetsWithArray(dictionaries: dictionaries)
+            success(tweets)
+        },
+        
+        failure: { (task: URLSessionDataTask?, error: Error) in
+            failure(error)
+        }
+        )
+
+    }
+    
     func currentAccount(success: @escaping (User) -> (), failure: @escaping (Error) -> ()) {
         get("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: URLSessionDataTask, response: Any?) in
                 let userDictionary = response as! NSDictionary
