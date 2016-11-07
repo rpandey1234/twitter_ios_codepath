@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="j6R-jH-cUx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="BYZ-38-t0r" customClass="LoginViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -103,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="-519.20000000000005" y="920.68965517241384"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="lyG-4e-oyS">
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" id="Vmh-lp-mom" customClass="ProfileViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,10 +123,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Profile" id="t2V-9g-vBv">
+                        <barButtonItem key="rightBarButtonItem" title="Compose" id="xXE-8J-nEr">
+                            <connections>
+                                <action selector="tapComposeButton:" destination="Vmh-lp-mom" id="dgu-LO-BUi"/>
+                                <segue destination="FfE-Vc-oVi" kind="presentation" id="AxS-90-4tC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avn-XI-PgS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149.59999999999999" y="1590.8545727136434"/>
+            <point key="canvasLocation" x="1846" y="921"/>
         </scene>
         <!--Hamburger View Controller-->
         <scene sceneID="ogj-7E-3ij">
@@ -671,8 +679,26 @@
             </objects>
             <point key="canvasLocation" x="2534" y="896"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="QxH-6k-XLV">
+            <objects>
+                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="lSA-De-9zE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nug-UC-1PQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Vmh-lp-mom" kind="relationship" relationship="rootViewController" id="Yhm-cO-neY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3zH-1l-cU7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1089" y="921"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="10m-0A-8o6"/>
+        <segue reference="AxS-90-4tC"/>
     </inferredMetricsTieBreakers>
 </document>

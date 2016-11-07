@@ -19,14 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if User.currentUser != nil {
-            let hamburgerViewController = window!.rootViewController as!  HamburgerViewController
+            let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
             let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
             menuViewController.hamburgerViewController = hamburgerViewController
             hamburgerViewController.menuViewController = menuViewController
-            
-//            let vc = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
-//            let vc = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController")
-//            window?.rootViewController = vc
+            self.window?.rootViewController = hamburgerViewController
+        } else {
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            self.window?.rootViewController = vc
         }
 
         NotificationCenter.default.addObserver(forName: NSNotification.Name(User.userDidLogoutNotification), object: nil, queue: OperationQueue.main) { (Notification) -> Void in

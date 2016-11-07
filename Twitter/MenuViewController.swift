@@ -23,8 +23,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.dataSource = self
         tableView.delegate = self
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        homeNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsViewController")
-        profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileViewController")
+        homeNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
+        profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
         viewControllers.append(homeNavigationController)
         viewControllers.append(profileNavigationController)
         
