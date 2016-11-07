@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class TweetsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, userImageTapDelegate {
 
     var isMoreDataLoading = false
     var tweets: [Tweet]!
@@ -105,6 +105,10 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
                 let navController = segue.destination as! UINavigationController
                 let detailVc = navController.topViewController as! SingleViewController
                 detailVc.tweet = sender as? Tweet
+            } else if (identifier == "userProfile") {
+                let navController = segue.destination as! UINavigationController
+                let profileVc = navController.topViewController as! ProfileViewController
+                profileVc.user = sender as? User
             }
         }
     }
@@ -114,7 +118,6 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
             let detailTweet = tweets[row]
             tableView.deselectRow(at: indexPath, animated: true)
             performSegue(withIdentifier: "detailTweet", sender: detailTweet)
-            
         }
     }
     
@@ -125,6 +128,7 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetTableViewCell", for: indexPath) as! TweetTableViewCell
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -132,14 +136,8 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
         return tweets?.count ?? 0
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func userImageTapDelegate(user: User) {
+        performSegue(withIdentifier: "userProfile", sender: user)
     }
-    */
 
 }

@@ -253,6 +253,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="t2V-9g-vBv">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="IhQ-rz-1FB">
+                            <connections>
+                                <action selector="onBackTap:" destination="Vmh-lp-mom" id="e4G-3q-1bw"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Compose" id="xXE-8J-nEr">
                             <connections>
                                 <action selector="tapComposeButton:" destination="Vmh-lp-mom" id="dgu-LO-BUi"/>
@@ -429,6 +434,7 @@
                                             <outlet property="retweetImageView" destination="X8v-cB-uvS" id="vdc-Kc-wnh"/>
                                             <outlet property="timestampLabel" destination="UeB-bJ-99f" id="xOS-2C-rty"/>
                                             <outlet property="userImageView" destination="kQ4-sH-Gzr" id="07g-sM-sLg"/>
+                                            <segue destination="lSA-De-9zE" kind="presentation" identifier="userProfile" id="A1r-tn-kQo"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -829,7 +835,7 @@
             </objects>
             <point key="canvasLocation" x="1675.5" y="920.5"/>
         </scene>
-        <!--Mentions View Controller-->
+        <!--Mentions-->
         <scene sceneID="Hu3-p6-1L9">
             <objects>
                 <viewController id="p4W-WJ-TQv" customClass="MentionsViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -867,7 +873,7 @@
                             <constraint firstItem="Fg5-eL-Xd4" firstAttribute="leading" secondItem="0y9-NO-YcB" secondAttribute="leading" id="rN9-0v-4UZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="GvW-P3-zLr"/>
+                    <navigationItem key="navigationItem" title="Mentions" id="GvW-P3-zLr"/>
                     <connections>
                         <outlet property="tableView" destination="Fg5-eL-Xd4" id="hIp-qp-bdX"/>
                     </connections>
@@ -914,7 +920,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aZM-q1-LjV"/>
-        <segue reference="B0Z-5Y-jPU"/>
+        <segue reference="UN5-pl-gpg"/>
+        <segue reference="AxS-90-4tC"/>
     </inferredMetricsTieBreakers>
 </document>

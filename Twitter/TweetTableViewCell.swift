@@ -10,6 +10,8 @@ import UIKit
 
 class TweetTableViewCell: UITableViewCell {
     
+    var delegate: userImageTapDelegate?
+    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
@@ -28,7 +30,6 @@ class TweetTableViewCell: UITableViewCell {
     
     var tweet: Tweet! {
         didSet {
-//            contentLabel.text = "hello"
             contentLabel.text = tweet.text
             authorLabel.text = tweet.user?.name
             if let handle = tweet.user?.screenName {
@@ -46,6 +47,8 @@ class TweetTableViewCell: UITableViewCell {
                 timestampLabel.text = timestamp.timeAgoSimple
             }
             
+            let tap = UITapGestureRecognizer(target: self, action: #selector(onImageTap))
+            userImageView.addGestureRecognizer(tap)
         }
     }
 
@@ -55,15 +58,16 @@ class TweetTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    func onImageTap(tapGestureRecognizer: UITapGestureRecognizer) {
+        delegate?.userImageTapDelegate(user: tweet.user!)
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         authorHandleLabel.preferredMaxLayoutWidth = authorHandleLabel.frame.size.width
     }
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+protocol userImageTapDelegate {
+    func userImageTapDelegate(user: User)
 }

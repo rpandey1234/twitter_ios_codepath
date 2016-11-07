@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
 
+    var user: User?
     var isMoreDataLoading = false
     var tweets: [Tweet]!
     var loadingMoreView: InfiniteScrollActivityView?
@@ -51,7 +52,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         if refreshControl != nil {
             maxId = nil
         }
-        TwitterClient.sharedInstance?.profileStatuses(maxId: maxId, screenName: User.currentUser?.screenName!, success: { (tweets: [Tweet]) in
+        var screenName: String!
+        if let user = user {
+            screenName = user.screenName!
+        } else {
+            screenName = (User.currentUser?.screenName!)!
+        }
+        TwitterClient.sharedInstance?.profileStatuses(maxId: maxId, screenName: screenName, success: { (tweets: [Tweet]) in
             if (maxId != nil) {
                 for (index, tweet) in tweets.enumerated() {
                     if index != 0 {
@@ -103,6 +110,10 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
+    @IBAction func onBackTap(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetTableViewCell", for: indexPath) as! TweetTableViewCell
         cell.tweet = tweets[indexPath.row]
@@ -116,7 +127,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileHeaderView") as! ProfileHeaderView
         cell.backgroundColor = UIColor.white
-        cell.user = User.currentUser
+        if let user = user {
+            cell.user = user
+        } else {
+            cell.user = User.currentUser
+        }
         return cell
     }
     
