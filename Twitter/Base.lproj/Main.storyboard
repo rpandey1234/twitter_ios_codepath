@@ -566,12 +566,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="msr-Ue-FiV">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="msr-Ue-FiV">
                                 <rect key="frame" x="8" y="72" width="40" height="40"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="lDf-f6-g3h"/>
                                     <constraint firstAttribute="width" constant="40" id="ok3-OY-2mo"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="3eI-gg-tu1" appends="YES" id="5uj-he-GEn"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Real Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Red-fi-AyN">
                                 <rect key="frame" x="56" y="74" width="116" height="18"/>
@@ -757,9 +761,15 @@
                         <outlet property="timeStampLabel" destination="t6e-gk-PY5" id="X9U-Qb-vvV"/>
                         <outlet property="userHandleLabel" destination="SfT-jq-RYr" id="AjK-UR-bO3"/>
                         <segue destination="FfE-Vc-oVi" kind="presentation" identifier="composeSegue" id="B0Z-5Y-jPU"/>
+                        <segue destination="lSA-De-9zE" kind="presentation" identifier="userProfile" id="BYg-PY-ITJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LtE-OO-aSx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="3eI-gg-tu1">
+                    <connections>
+                        <action selector="didTapUserImage:" destination="dlC-iy-fea" id="z3k-az-LrW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3966.5" y="895.5"/>
         </scene>
@@ -921,8 +931,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hmG-HK-Fpl"/>
-        <segue reference="AxS-90-4tC"/>
+        <segue reference="BYg-PY-ITJ"/>
         <segue reference="UN5-pl-gpg"/>
+        <segue reference="B0Z-5Y-jPU"/>
     </inferredMetricsTieBreakers>
 </document>

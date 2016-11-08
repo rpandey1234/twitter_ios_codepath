@@ -23,6 +23,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         homeNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
         profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")

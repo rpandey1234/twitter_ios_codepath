@@ -29,6 +29,10 @@ class SingleViewController: UIViewController {
         imageView.tintColor = color
     }
     
+    @IBAction func didTapUserImage(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "userProfile", sender: tweet?.user)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -73,6 +77,10 @@ class SingleViewController: UIViewController {
                     composeVc.prefillText = "@" + replyHandle + " "
                 }
                 composeVc.user = User.currentUser
+            } else if (identifier == "userProfile") {
+                let navController = segue.destination as! UINavigationController
+                let profileVc = navController.topViewController as! ProfileViewController
+                profileVc.user = sender as? User
             }
         }
     }
