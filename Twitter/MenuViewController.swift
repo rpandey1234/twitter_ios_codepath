@@ -14,9 +14,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     private var homeNavigationController: UIViewController!
     private var profileNavigationController: UIViewController!
     private var mentionsNavigationController: UIViewController!
+    private var accountsViewController: UIViewController!
     var viewControllers: [UIViewController] = []
     var hamburgerViewController: HamburgerViewController!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,9 +29,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         homeNavigationController = storyboard.instantiateViewController(withIdentifier: "TweetsNavigationController")
         profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
         mentionsNavigationController = storyboard.instantiateViewController(withIdentifier: "MentionsNavigationController")
+        accountsViewController = storyboard.instantiateViewController(withIdentifier: "AccountsViewController")
         viewControllers.append(homeNavigationController)
         viewControllers.append(profileNavigationController)
         viewControllers.append(mentionsNavigationController)
+        viewControllers.append(accountsViewController)
         
         hamburgerViewController.contentViewController = homeNavigationController
     }
@@ -46,7 +49,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-        let titles = ["Home", "Profile", "Mentions"]
+        let titles = ["Home", "Profile", "Mentions", "Accounts"]
         cell.menuTitleLabel.text = titles[indexPath.row]
         return cell
     }
