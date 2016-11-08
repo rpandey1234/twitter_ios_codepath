@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MentionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class MentionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, userImageTapDelegate {
 
 
     var isMoreDataLoading = false
@@ -99,6 +99,10 @@ class MentionsViewController: UIViewController, UITableViewDataSource, UITableVi
                 let navController = segue.destination as! UINavigationController
                 let detailVc = navController.topViewController as! SingleViewController
                 detailVc.tweet = sender as? Tweet
+            } else if (identifier == "userProfile") {
+                let navController = segue.destination as! UINavigationController
+                let profileVc = navController.topViewController as! ProfileViewController
+                profileVc.user = sender as? User
             }
         }
     }
@@ -106,6 +110,7 @@ class MentionsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetTableViewCell", for: indexPath) as! TweetTableViewCell
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
@@ -120,5 +125,9 @@ class MentionsViewController: UIViewController, UITableViewDataSource, UITableVi
             performSegue(withIdentifier: "detailTweet", sender: detailTweet)
             
         }
+    }
+    
+    func userImageTapDelegate(user: User) {
+        performSegue(withIdentifier: "userProfile", sender: user)
     }
 }
