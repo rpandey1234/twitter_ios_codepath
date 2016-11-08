@@ -41,6 +41,10 @@ class SingleViewController: UIViewController {
             }
             if let imageUrl = tweet.user?.profileUrl {
                 avatarImageView.setImageWith(imageUrl)
+                avatarImageView.layer.cornerRadius = 6
+                avatarImageView.layer.borderColor = UIColor.lightGray.cgColor
+                avatarImageView.layer.borderWidth = 2.0
+                avatarImageView.clipsToBounds = true
             }
             setTintedImage(imageView: replyImageView, filename: "reply", color: UIColor.lightGray)
             let colorRetweet = tweet.hasRetweeted ? UIColor.green : UIColor.lightGray

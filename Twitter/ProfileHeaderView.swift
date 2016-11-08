@@ -27,6 +27,10 @@ class ProfileHeaderView: UITableViewCell {
             }
             if let imageUrl = user.profileUrl {
                 userImageView.setImageWith(imageUrl)
+                userImageView.layer.cornerRadius = 8
+                userImageView.layer.borderColor = UIColor.white.cgColor
+                userImageView.layer.borderWidth = 3.0
+                userImageView.clipsToBounds = true
             }
             if let backgroundImageUrl = user.profileBackgroundUrl {
                 backgroundImageView.setImageWith(backgroundImageUrl)

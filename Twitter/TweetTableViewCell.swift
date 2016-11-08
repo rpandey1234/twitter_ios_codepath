@@ -37,6 +37,10 @@ class TweetTableViewCell: UITableViewCell {
             }
             if let imageUrl = tweet.user?.profileUrl {
                 userImageView.setImageWith(imageUrl)
+                userImageView.layer.cornerRadius = 6
+                userImageView.layer.borderColor = UIColor.lightGray.cgColor
+                userImageView.layer.borderWidth = 2.0
+                userImageView.clipsToBounds = true
             }
             setTintedImage(imageView: replyImageView, filename: "reply", color: UIColor.lightGray)
             let colorRetweet = tweet.hasRetweeted ? UIColor.green : UIColor.lightGray

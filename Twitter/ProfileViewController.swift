@@ -136,7 +136,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 170
+        return 175
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
