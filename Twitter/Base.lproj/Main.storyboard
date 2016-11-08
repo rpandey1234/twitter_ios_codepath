@@ -143,6 +143,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="327" height="198"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
+                                                        <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP6-ZS-94v">
+                                                            <rect key="frame" x="0.0" y="0.0" width="327" height="197"/>
+                                                        </imageView>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1IT-lA-mje">
                                                             <rect key="frame" x="16" y="8" width="50" height="50"/>
                                                             <constraints>
@@ -201,9 +204,6 @@
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NP6-ZS-94v">
-                                                            <rect key="frame" x="0.0" y="0.0" width="327" height="197"/>
-                                                        </imageView>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="jk6-L1-Z31" firstAttribute="leading" secondItem="Lg3-Lm-Tcs" secondAttribute="leading" id="0pc-CO-T3Q"/>
@@ -922,7 +922,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hmG-HK-Fpl"/>
-        <segue reference="aZM-q1-LjV"/>
         <segue reference="AxS-90-4tC"/>
+        <segue reference="UN5-pl-gpg"/>
     </inferredMetricsTieBreakers>
 </document>
